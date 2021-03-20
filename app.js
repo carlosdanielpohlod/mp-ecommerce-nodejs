@@ -5,7 +5,7 @@ var port = process.env.PORT || 3000
 var app = express();
  
 
-function pay(res){
+function pay(req,res){
     let preference = {
         "back_urls": {
             "success": "https://https://www.success.com/",
@@ -28,10 +28,10 @@ function pay(res){
         "items": [
             {
                 "ID": 1234,
-                "title": "Dummy Item",
+                "title": req.query.title,
                 "description": "Celular de Tienda e-commerce",
                 "quantity": 1,
-                "unit_price": 10.0
+                "unit_price": parseFloat(req.query.price)
             }
         ],
         "payer": {
@@ -60,13 +60,14 @@ function pay(res){
 
     mercadopago.preferences.create(preference)
         .then(function(response){
-            console.log(response)
-            res.redirect(response.body.sandbox_init_point)
-        // Este valor substituirá a string "<%= global.id %>" no seu HTML
-        global.id = response.body.id;
+            
+            req.query['init_point'] = response.body.init_point
+            req.query['preference_id'] = response.body.id
+            res.render('detail', req.query);
         }).catch(function(error){
             console.log(error);
         });
+    return global
 }
 
 
@@ -84,10 +85,12 @@ app.get('/', function (req, res) {
 });
 
 app.get('/detail', function (req, res) {
-    res.render('detail', req.query);
+    global = pay(req,res)
+    
+    
 });
 app.get('/pay', (req, res)=>{
-    pay(res)
-    // res.status(200).send()
+    global = pay()
+    res.render('detail', global);
 })
 app.listen(port);

@@ -84,7 +84,10 @@
                                     <h3 >
                                         {{ unit }}
                                     </h3>
-                                    <a href="/pay" target="_blank">Pagar com mercado pago</a>
+                                    <script
+                                        src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
+                                        data-preference-id='{{preference_id}}'>
+                                        </script>
                                 </form>
                             </div>
                             
@@ -96,7 +99,4 @@
     </div>
 </div>
    
-<script
-  src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
-  data-preference-id='<%= global.id %>'>
-</script>
+
