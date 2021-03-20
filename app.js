@@ -1,6 +1,7 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var port = process.env.PORT || 3000
+let checkout = require('./api/checkout')
 
 var app = express();
  
@@ -16,6 +17,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/detail', function (req, res) {
+    checkout.pay()
     res.render('detail', req.query);
 });
 
