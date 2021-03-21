@@ -8,7 +8,7 @@ var app = express();
 function pay(req,res){
     let preference = {
         "back_urls": {
-            "success": "https://mercadopagoteste.free.beeceptor.com",
+            "success": "https://carlosdanielpohlod.herokuapp.com/success",
             "failure": "https://carlosdanielpohlod.herokuapp.com/failure",
             "pending": "https://carlosdanielpohlod.herokuapp.com/pending"
         },
@@ -22,7 +22,7 @@ function pay(req,res){
             ],
             "installments": 6
         },
-        "notification_url": "https://webhook.site/962b5b8b-cdd5-44e5-9ee4-2377cdfedf39",
+        "notification_url": "https://beeceptor.com/console/mercadopagoteste",
         "statement_descriptor": "Tienda e-commerce",
         "external_reference": "carlospohlod@gmail.com",
         "items": [
