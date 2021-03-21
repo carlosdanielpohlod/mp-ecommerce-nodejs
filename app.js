@@ -8,9 +8,9 @@ var app = express();
 function pay(req,res){
     let preference = {
         "back_urls": {
-            "success": "https://carlosdanielpohlod.herokuapp.com/success",
-            "failure": "https://www.failure.com/",
-            "pending": "https://www.pending.com/"
+            "success": "https://mercadopagoteste.free.beeceptor.com",
+            "failure": "https://carlosdanielpohlod.herokuapp.com/failure",
+            "pending": "https://carlosdanielpohlod.herokuapp.com/pending"
         },
         "auto_return": "approved",
         
@@ -61,7 +61,7 @@ function pay(req,res){
     mercadopago.preferences.create(preference)
         .then(function(response){
             
-            req.query['init_point'] = response.body.sandbox_init_point
+            req.query['init_point'] = response.body.init_point
             req.query['preference_id'] = response.body.id
             res.render('detail', req.query);
         }).catch(function(error){
@@ -85,6 +85,12 @@ app.get('/', function (req, res) {
 });
 app.get('/success', (req, res)=>{
     res.render('success', req.query)
+})
+app.get('/pending', (req, res) => {
+    res.render('pending')
+})
+app.get('/failure', (req, res) => {
+    res.render('failure')
 })
 app.get('/detail', function (req, res) {
     global = pay(req,res)
