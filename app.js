@@ -61,7 +61,7 @@ function pay(req,res){
     mercadopago.preferences.create(preference)
         .then(function(response){
             
-            req.query['init_point'] = response.body.init_point
+            req.query['init_point'] = response.body.sandbox_init_point
             req.query['preference_id'] = response.body.id
             res.render('detail', req.query);
         }).catch(function(error){
