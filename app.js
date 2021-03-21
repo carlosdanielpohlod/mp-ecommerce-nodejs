@@ -8,7 +8,7 @@ var app = express();
 function pay(req,res){
     let preference = {
         "back_urls": {
-            "success": "https://https://www.success.com/",
+            "success": "https://carlosdanielpohlod.herokuapp.com/success",
             "failure": "https://www.failure.com/",
             "pending": "https://www.pending.com/"
         },
