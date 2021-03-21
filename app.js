@@ -5,7 +5,7 @@ var port = process.env.PORT || 3000
 var app = express();
  
 
-function pay(req,res){
+function create_preference(req,res){
     let preference = {
         "back_urls": {
             "success": "https://carlosdanielpohlod.herokuapp.com/success",
@@ -93,7 +93,7 @@ app.get('/failure', (req, res) => {
     res.render('failure')
 })
 app.get('/detail', function (req, res) {
-    global = pay(req,res)
+    create_preference(req,res)
     
     
 });
