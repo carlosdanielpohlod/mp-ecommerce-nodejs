@@ -83,14 +83,13 @@ app.use('/assets', express.static(__dirname + '/assets'));
 app.get('/', function (req, res) {
     res.render('home');
 });
-
+app.get('/success', (req, res)=>{
+    res.render('success', req.query)
+})
 app.get('/detail', function (req, res) {
     global = pay(req,res)
     
     
 });
-app.get('/pay', (req, res)=>{
-    global = pay()
-    res.render('detail', global);
-})
+
 app.listen(port);
