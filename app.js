@@ -55,7 +55,8 @@ function create_preference(req,res){
     mercadopago.configure({
         access_token: 'APP_USR-334491433003961-030821-12d7475807d694b645722c1946d5ce5a-725736327',
         public_key:'APP_USR-6096a634-0b35-452c-94c9-a18adb8ffb15',
-        
+        integrator_id:'dev_24c65fb163bf11ea96500242ac130004',
+        collector_id:'725736327'
     });
 
     mercadopago.preferences.create(preference)
